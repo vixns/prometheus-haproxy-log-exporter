@@ -15,6 +15,7 @@ else:
              'prometheus-client',
              #'systemd', ??? Unknown which module this is
              'haproxy-log-analysis',
+             'python-snappy',
              'kafka-python',
              #'pkg-resources', ??? Unknown which module this is
              'tailhead'
