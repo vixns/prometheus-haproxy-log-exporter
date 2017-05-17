@@ -11,6 +11,8 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import stopit
+
 from kafka import KafkaConsumer
 
 from ..log_processing import AbstractLogProcessor
@@ -27,7 +29,8 @@ class KafkaProcessor(AbstractLogProcessor):
     def run(self):
         consumer = KafkaConsumer(self.topic, bootstrap_servers=self.brokers, group_id=self.group)
         for msg in consumer:
-            self.update_metrics(msg.value.decode())
+            with stopit.ThreadingTimeout(20):
+                self.update_metrics(msg.value.decode())
             if self.should_exit:
                 consumer.close()
                 return

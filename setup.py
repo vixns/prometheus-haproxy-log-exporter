@@ -17,6 +17,7 @@ else:
              'haproxy-log-analysis',
              'python-snappy',
              'kafka-python',
+             'stopit',
              #'pkg-resources', ??? Unknown which module this is
              'tailhead'
         ],
