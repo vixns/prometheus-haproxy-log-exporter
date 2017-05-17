@@ -15,7 +15,7 @@ import re
 import logging
 import threading
 
-from haproxy.line import Line
+from .line import Line
 from prometheus_client import Counter
 
 from .metrics import NAMESPACE
